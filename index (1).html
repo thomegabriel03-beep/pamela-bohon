@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pamela Bohon · Advocacia Criminal em Itajaí</title>
+<meta name="description" content="Pamela Bohon, advogada criminalista em Itajaí, Santa Catarina. Especialista em Direito Penal e Criminologia pela PUC-RS.">
+<meta name="theme-color" content="#2C1018">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vinho:#4A1520;
+  --bordeaux:#2C1018;
+  --bordeaux-2:#240C13;
+  --superficie:#69434C;
+  --marfim:#F2E8DC;
+  --rose:#C9B0B1;
+  --champagne:#B49A73;
+  --fio:rgba(201,176,177,.22);
+  --fio-forte:rgba(201,176,177,.45);
+  --vidro:linear-gradient(145deg,rgba(105,67,76,.55) 0%,rgba(74,21,32,.42) 45%,rgba(44,16,24,.5) 100%);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --gutter:clamp(20px,5.4vw,56px);
+  --max:1200px;
+  --raio:16px;
+  --nav-h:76px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--vinho:#4A1520;--marfim:#F2E8DC}}
+:root[data-theme="dark"]{--vinho:#4A1520;--marfim:#F2E8DC}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--bordeaux);scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 24px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+body{
+  margin:0;color:var(--marfim);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(120% 60% at 85% 8%,rgba(105,67,76,.45) 0%,rgba(74,21,32,0) 60%),
+    linear-gradient(180deg,#3A121C 0%,var(--bordeaux) 38%,var(--bordeaux-2) 100%);
+  background-color:var(--bordeaux);
+  min-height:100%;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--champagne);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:0;background:var(--marfim);color:var(--bordeaux);padding:10px 14px;z-index:60;border-radius:8px}
+.skip:focus{left:12px;top:calc(env(safe-area-inset-top,0px) + 12px)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Cabeçalho ---------- */
+.topo{position:relative;z-index:30}
+.topo .wrap{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:8px;padding-top:22px;padding-bottom:8px}
+.marca{grid-column:2;text-align:center;text-decoration:none;line-height:1}
+.marca .nome{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,7vw,34px);letter-spacing:.015em;white-space:nowrap}
+.marca .oab{display:block;margin-top:6px;font-size:clamp(10px,2.7vw,11.5px);letter-spacing:.18em;padding-left:.18em;color:var(--champagne);font-weight:500}
+.marca .sub{display:block;margin-top:7px;font-size:clamp(9.5px,2.6vw,11px);letter-spacing:.32em;padding-left:.32em;color:var(--marfim);opacity:.9}
+.btn-menu{grid-column:3;width:48px;height:48px;border-radius:12px;border:1px solid rgba(201,176,177,.28);background:linear-gradient(160deg,rgba(105,67,76,.8),rgba(58,22,32,.75));box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(242,232,220,.12);color:var(--marfim);display:grid;place-items:center;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:border-color .2s,transform .2s}
+.btn-menu:hover{border-color:var(--fio-forte)}
+.btn-menu:active{transform:scale(.97)}
+.btn-menu svg{width:22px;height:22px}
+.nav-desktop{display:none}
+@media (max-width:359px){.topo .wrap{grid-template-columns:0 1fr 44px}.btn-menu{width:44px;height:44px}.marca{text-align:left}}
+
+/* painel do menu */
+.painel{position:fixed;inset:0;z-index:50;display:none}
+.painel.aberto{display:block}
+.painel .veu{position:absolute;inset:0;background:rgba(20,6,10,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .25s}
+.painel .folha{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;left:12px;max-width:420px;margin-left:auto;border-radius:20px;border:1px solid var(--fio-forte);background:linear-gradient(160deg,rgba(105,67,76,.96),rgba(44,16,24,.97));box-shadow:0 24px 60px rgba(0,0,0,.45);padding:18px 22px 22px;transform:translateY(-8px);opacity:0;transition:opacity .25s,transform .25s}
+.painel.visivel .veu{opacity:1}
+.painel.visivel .folha{opacity:1;transform:none}
+.folha-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.folha-topo span{font-size:12px;letter-spacing:.24em;color:var(--rose)}
+.fechar{width:44px;height:44px;border-radius:12px;border:1px solid var(--fio);background:transparent;color:var(--marfim);display:grid;place-items:center;cursor:pointer}
+.folha ul{list-style:none;margin:0;padding:0}
+.folha li a{display:flex;justify-content:space-between;align-items:center;padding:15px 2px;border-bottom:1px solid var(--fio);font-family:var(--serif);font-size:23px;text-decoration:none}
+.folha li:last-child a{border-bottom:0}
+.folha li a::after{content:"";width:8px;height:8px;border-top:1px solid var(--rose);border-right:1px solid var(--rose);transform:rotate(45deg)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;padding-bottom:8px}
+.hero .wrap{position:relative}
+.retrato{position:absolute;z-index:1;margin:0;pointer-events:none;
+  top:18px;right:calc(-1 * var(--gutter) - 12vw);width:min(84vw,400px)}
+.retrato img{width:100%;height:auto;
+  -webkit-mask-image:linear-gradient(to top,transparent 0%,#000 34%),linear-gradient(to right,transparent 0%,#000 16%);
+  -webkit-mask-composite:source-in;
+          mask-image:linear-gradient(to top,transparent 0%,#000 34%),linear-gradient(to right,transparent 0%,#000 16%);
+          mask-composite:intersect;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.25))}
+.hero-texto{position:relative;z-index:2;padding-top:clamp(150px,44vw,190px)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,11.4vw,52px);line-height:1.02;letter-spacing:-.012em;margin:0;text-shadow:0 2px 18px rgba(28,8,14,.55)}
+h1 .l{display:block}
+.local{margin:14px 0 0;font-size:clamp(17px,4.6vw,20px);color:var(--rose);letter-spacing:.01em;text-shadow:0 1px 12px rgba(28,8,14,.6)}
+.cta{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-height:64px;margin-top:34px;padding:0 60px;border-radius:14px;background:var(--marfim);color:var(--bordeaux);text-decoration:none;font-weight:600;font-size:18px;letter-spacing:.005em;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:background .2s,transform .2s,box-shadow .2s}
+.cta svg{position:absolute;right:22px;width:22px;height:22px;transition:transform .25s}
+.cta:hover{background:#fff7ee;box-shadow:0 18px 36px rgba(0,0,0,.32)}
+.cta:hover svg{transform:translate(2px,-2px)}
+.cta:active{transform:scale(.99)}
+
+.credenciais{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;margin-top:34px;padding:26px 8px;border-radius:var(--raio);border:1px solid rgba(201,176,177,.5);background:var(--vidro);-webkit-backdrop-filter:blur(14px) saturate(120%);backdrop-filter:blur(14px) saturate(120%);box-shadow:0 18px 40px rgba(0,0,0,.22);overflow:hidden;text-align:center}
+.credenciais::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 0% 0%,rgba(242,232,220,.12),rgba(242,232,220,0) 60%);pointer-events:none}
+.credenciais .div{height:78%;background:var(--fio-forte)}
+.credenciais dl{margin:0;padding:0 10px;position:relative}
+.credenciais dt{font-family:var(--serif);font-size:clamp(34px,9.6vw,44px);line-height:1;margin-bottom:10px}
+.credenciais dd{margin:0;color:var(--rose);font-size:clamp(15px,4.1vw,17px);line-height:1.3}
+
+/* selo e faixa de plantão */
+.selo-plantao{display:inline-flex;align-items:center;gap:9px;margin:18px 0 0;padding:7px 14px 7px 12px;border-radius:999px;border:1px solid rgba(180,154,115,.55);background:rgba(44,16,24,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;font-weight:500;letter-spacing:.02em;color:var(--marfim)}
+.selo-plantao .ponto{width:7px;height:7px;border-radius:50%;background:var(--champagne);box-shadow:0 0 0 3px rgba(180,154,115,.2)}
+.plantao{padding:44px 0 0}
+.plantao-box{position:relative;overflow:hidden;display:grid;gap:18px;padding:26px 22px 22px;border-radius:20px;border:1px solid rgba(180,154,115,.55);background:linear-gradient(150deg,rgba(105,67,76,.62) 0%,rgba(74,21,32,.55) 50%,rgba(44,16,24,.6) 100%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 18px 40px rgba(0,0,0,.24)}
+.plantao-box::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 0% 0%,rgba(242,232,220,.12),transparent 60%);pointer-events:none}
+.plantao-icone{position:relative;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(180,154,115,.45);color:var(--champagne)}
+.plantao-icone svg{width:26px;height:26px}
+.plantao-texto{position:relative}
+.plantao h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,8.6vw,46px);line-height:1.05;margin:0 0 10px}
+.plantao-texto p{margin:0 0 10px;color:#e7d9cf;max-width:36em}
+.plantao-texto .plantao-aviso{color:var(--rose);font-size:15px;margin:0}
+.cta-plantao{margin-top:4px;padding:0 50px;white-space:nowrap}
+.cta-insta{margin-top:12px;background:transparent;color:var(--marfim);border:1px solid var(--fio-forte);box-shadow:none}
+.cta-insta:hover{background:rgba(105,67,76,.35)}
+.so-wa+.cta-insta{margin-top:12px}
+.contato-box .cta.so-wa{margin-top:0}
+@media (min-width:1000px){
+  .plantao{padding-top:24px}
+  .plantao-box{grid-template-columns:56px minmax(0,1fr) 340px;align-items:center;gap:28px;padding:34px 36px}
+  .plantao-icone{align-self:start}
+  .cta-plantao{margin-top:0}
+}
+
+/* ---------- Seções ---------- */
+.secao{padding:56px 0 8px}
+.secao-cab{border-top:1px solid var(--fio);padding-top:36px}
+.secao h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,9vw,52px);line-height:1.05;margin:0}
+.secao .resumo{margin:10px 0 0;color:var(--rose);font-size:17px;max-width:38em}
+.corpo{margin-top:30px}
+
+/* Conheça Pamela (expansível) */
+.h2-exp{margin:0}
+.expandir .t{display:block}
+.expandir .resumo{display:block;font-family:var(--sans);font-size:17px;line-height:1.6;font-weight:400}
+.expandir{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr 44px;align-items:center;gap:16px;width:100%;border-radius:10px}
+.expandir:focus-visible{outline:2px solid var(--champagne);outline-offset:6px}
+.expandir .seta{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
+.expandir:hover .seta{background:rgba(105,67,76,.4)}
+.expandir .seta svg{width:22px;height:22px;transition:transform .35s}
+.expandir[aria-expanded="true"] .seta svg{transform:rotate(180deg)}
+.gaveta{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+.gaveta.aberta{grid-template-rows:1fr}
+.gaveta>div{overflow:hidden}
+.gaveta .corpo{padding-bottom:6px}
+.bio p{color:#e7d9cf;margin:0 0 1em;max-width:40em}
+.bio p:first-child{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--marfim)}
+.dados{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dados li{border:1px solid var(--fio);border-radius:14px;padding:18px 16px;background:rgba(105,67,76,.18)}
+.dados strong{display:block;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.05;margin-bottom:6px}
+.dados span{font-size:14px;color:var(--rose);line-height:1.35;display:block}
+
+/* listas */
+.itens{list-style:none;margin:0;padding:0}
+.itens li{padding:22px 0;border-bottom:1px solid var(--fio)}
+.itens li:first-child{padding-top:0}
+.itens h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;margin:0 0 6px}
+.itens p{margin:0;color:var(--rose);max-width:38em}
+
+.grupo{font-size:12px;letter-spacing:.24em;color:var(--champagne);margin:0 0 14px}
+.grupo+.cargos{margin-bottom:34px}
+.cargos{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cargos li{border:1px solid var(--fio);border-radius:var(--raio);padding:20px 20px 18px;background:var(--vidro);position:relative;overflow:hidden}
+.cargos li::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 0% 0%,rgba(242,232,220,.07),transparent 60%);pointer-events:none}
+.cargos .cargo{display:block;font-family:var(--serif);font-size:24px;line-height:1.15}
+.cargos .orgao{display:block;margin-top:6px;color:#e7d9cf;font-size:16px;line-height:1.4}
+.cargos small{display:block;margin-top:4px;color:var(--rose);font-size:13.5px;line-height:1.4}
+
+.principios{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:520px){.principios{grid-template-columns:1fr 1fr}}
+.principios div{border:1px solid var(--fio);border-radius:var(--raio);padding:20px 18px;background:rgba(105,67,76,.16)}
+.principios h3{font-family:var(--serif);font-weight:400;font-size:23px;margin:0 0 6px}
+.principios p{margin:0;color:var(--rose);font-size:15px;line-height:1.45}
+
+.faq{border-top:1px solid var(--fio)}
+.faq details{border-bottom:1px solid var(--fio)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 24px;gap:16px;align-items:center;padding:20px 0;font-family:var(--serif);font-size:21px;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:20px;height:20px;transition:transform .3s;color:var(--rose)}
+.faq details[open] summary svg{transform:rotate(180deg)}
+.faq details p{margin:0;padding:0 36px 22px 0;color:var(--rose);max-width:40em}
+
+.contato-box{margin-top:30px;border:1px solid rgba(201,176,177,.5);border-radius:20px;padding:26px 22px;background:var(--vidro);position:relative;overflow:hidden}
+.contato-box::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 0% 0%,rgba(242,232,220,.1),transparent 60%);pointer-events:none}
+.contato-box p{margin:0 0 12px;color:#e7d9cf;position:relative}
+.contato-box .aviso{color:var(--rose);font-size:15px;margin-bottom:22px}
+.contato-box .cta{margin-top:0;padding:0 48px;font-size:17px;white-space:nowrap}
+@media (max-width:359px){.contato-box .cta{font-size:15px;padding:0 40px}}
+.contato-box .local-2{position:relative;margin:20px 0 0;font-size:14px;color:var(--rose);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+
+footer{margin-top:64px;border-top:1px solid var(--fio);padding:34px 0 28px;font-size:14px;color:var(--rose)}
+.rodape{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.rodape .f-marca{grid-column:1/-1}
+.rodape .f-marca strong{display:block;font-family:var(--serif);font-weight:400;font-size:24px;color:var(--marfim);letter-spacing:.02em}
+.rodape h4{margin:0 0 10px;font-size:12px;letter-spacing:.2em;font-weight:500;color:var(--champagne)}
+.rodape ul{list-style:none;margin:0;padding:0}
+.rodape li{margin-bottom:6px}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:var(--marfim)}
+.legal{margin-top:30px;padding-top:18px;border-top:1px solid var(--fio);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px}
+.legal a{text-decoration:none}
+
+
+/* ---------- Desktop: redistribuição das seções ---------- */
+.nota-lateral{display:none}
+@media (min-width:1000px){
+  /* títulos acompanham a leitura, sem deixar a coluna esquerda vazia */
+  .secao-cab>.titulos{position:sticky;top:40px;align-self:start}
+  .nota-lateral{display:block;margin-top:36px;padding:22px;border-radius:var(--raio);border:1px solid rgba(180,154,115,.45);background:var(--vidro);position:relative;overflow:hidden;max-width:340px}
+  .nota-lateral::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 0% 0%,rgba(242,232,220,.1),transparent 60%);pointer-events:none}
+  .nota-lateral p{position:relative;margin:0 0 14px;color:#e7d9cf;font-size:15px}
+  .nota-lateral .nota-tit{font-family:var(--serif);font-size:24px;color:var(--marfim);margin-bottom:6px}
+  .link-nota{position:relative;display:inline-block;text-decoration:none;font-weight:600;font-size:15px;color:var(--marfim);border-bottom:1px solid var(--champagne);padding-bottom:2px}
+  .link-nota:hover{color:#fff}
+
+  /* seções largas: cabeçalho em linha e conteúdo em largura total */
+  .larga .secao-cab{display:block}
+  .larga .secao-cab>.titulos{position:static;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;margin-bottom:44px}
+  .larga .secao-cab>.titulos .resumo{margin:0;font-size:18px}
+  .larga .secao-cab>.corpo{margin-top:0}
+  .larga .cargos{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .larga .cargos li{display:flex;flex-direction:column;min-height:190px}
+  .larga .cargos small{margin-top:auto;padding-top:12px}
+  .larga .cargos-ant{grid-template-columns:1fr}
+  .larga .cargos-ant li{min-height:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:baseline;gap:6px 48px}
+  .larga .cargos-ant .cargo{grid-row:1/3}
+  .larga .cargos-ant small{margin-top:0;padding-top:0}
+  .larga .principios{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .larga .principios div{padding:26px 22px}
+}
+
+/* ---------- Navegação inferior (mobile) ---------- */
+.nav-inferior{position:fixed;z-index:40;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);max-width:520px;margin:0 auto;height:var(--nav-h);border-radius:20px;border:1px solid rgba(201,176,177,.32);background:linear-gradient(160deg,rgba(90,48,58,.78),rgba(44,16,24,.82));-webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%);box-shadow:0 16px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(242,232,220,.08)}
+.nav-inferior ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);height:100%}
+.nav-inferior a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;height:100%;text-decoration:none;color:var(--rose);font-size:13px;transition:color .2s}
+.nav-inferior svg{width:24px;height:24px}
+.nav-inferior a::before{content:"";position:absolute;top:-1px;left:50%;width:44px;height:3px;border-radius:0 0 4px 4px;background:var(--champagne);transform:translateX(-50%) scaleX(0);transition:transform .3s}
+.nav-inferior a[aria-current="true"]{color:var(--marfim)}
+.nav-inferior a[aria-current="true"]::before{transform:translateX(-50%) scaleX(1)}
+body{padding-bottom:calc(var(--nav-h) + 30px + env(safe-area-inset-bottom,0px))}
+
+/* entrada suave */
+@media (prefers-reduced-motion:no-preference){
+  .hero-texto,.credenciais{animation:surge .9s cubic-bezier(.2,.7,.2,1) both}
+  .cta{animation-delay:.12s}.credenciais{animation-delay:.22s}
+  .retrato{animation:aparece 1.2s ease both}
+  @keyframes surge{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes aparece{from{opacity:0}to{opacity:1}}
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width:700px){
+  .retrato{width:min(62vw,480px);right:calc(-1 * var(--gutter) - 40px);top:10px}
+  .hero-texto{padding-top:170px}
+  .cta{max-width:420px}
+  .credenciais{max-width:520px}
+  .dados{grid-template-columns:repeat(4,1fr)}
+  .cargos{grid-template-columns:1fr 1fr}
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width:1000px){
+  body{padding-bottom:0}
+  .nav-inferior{display:none}
+  .topo .wrap{grid-template-columns:auto 1fr;padding-top:30px;padding-bottom:10px}
+  .marca{grid-column:1;text-align:left}
+  .marca .nome{font-size:30px}
+  .marca .sub{font-size:11px}
+  /* OAB ao lado do nome no desktop */
+  .marca{display:grid;grid-template-columns:auto auto;column-gap:18px;align-items:center;justify-content:start}
+  .marca .nome{grid-column:1;grid-row:1}
+  .marca .sub{grid-column:1;grid-row:2}
+  .marca .oab{grid-column:2;grid-row:1;margin-top:0;padding:4px 0 4px 18px;border-left:1px solid rgba(180,154,115,.55);font-size:12px;letter-spacing:.16em;line-height:1.2;align-self:center}
+  .btn-menu{display:none}
+  .nav-desktop{display:block;justify-self:end}
+  .nav-desktop ul{display:flex;gap:6px;list-style:none;margin:0;padding:6px;border:1px solid var(--fio);border-radius:14px;background:rgba(74,21,32,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .nav-desktop a{display:block;padding:9px 14px;border-radius:9px;text-decoration:none;font-size:15px;color:var(--rose);transition:color .2s,background .2s}
+  .nav-desktop a:hover{color:var(--marfim);background:rgba(105,67,76,.35)}
+  .nav-desktop a.contato{background:var(--marfim);color:var(--bordeaux);font-weight:600}
+  .nav-desktop a.contato:hover{background:#fff7ee}
+
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;min-height:min(clamp(620px,calc(100vh + 40px),900px),62vw)}
+  .hero-col{grid-column:1;position:relative;z-index:2;padding:clamp(40px,11vh,110px) 0 70px}
+  .hero-texto{padding-top:0}
+  h1{font-size:clamp(64px,6.2vw,92px);line-height:1}
+  .local{font-size:21px;margin-top:20px}
+  .cta{max-width:380px;margin-top:40px}
+  .credenciais{max-width:520px;margin-top:30px}
+  /* retrato dimensionado pela altura do hero: a cabeça nunca é cortada */
+  /* retrato ancorado no topo do hero, preenchendo a primeira dobra */
+  .retrato{position:absolute;top:0;right:var(--gutter);width:auto;display:flex;justify-content:flex-end;
+    height:min(clamp(620px,calc(100vh + 40px),900px),62vw)}
+  .retrato img{height:100%;width:auto;max-width:none}
+  .retrato img{-webkit-mask-image:linear-gradient(to top,transparent 0%,#000 26%),linear-gradient(to right,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-image:linear-gradient(to top,transparent 0%,#000 26%),linear-gradient(to right,transparent 0%,#000 14%,#000 84%,transparent 100%)}
+
+  .secao{padding:96px 0 8px}
+  .secao-cab{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;padding-top:48px}
+  .secao-cab .titulos{grid-column:1}
+  .secao-cab .corpo,.secao-cab .gaveta{grid-column:2;margin-top:0}
+  .secao h2{font-size:52px}
+  .expandir{grid-column:1/-1}
+  .conheca .secao-cab{display:block}
+  .conheca .corpo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;margin-top:40px}
+  .conheca .dados{grid-template-columns:1fr 1fr;margin-top:0;align-self:start}
+  .conheca .bio{grid-column:2;grid-row:1}
+  .conheca .dados{grid-column:1;grid-row:1}
+  .itens li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;padding:26px 0}
+  .itens li:first-child{padding-top:0}
+  .itens h3{margin:0}
+  .cargos{grid-template-columns:1fr 1fr}
+  .contato-box{padding:40px}
+  .contato-box .cta{max-width:420px}
+  .rodape{grid-template-columns:2fr 1fr 1fr}
+  .rodape .f-marca{grid-column:auto}
+}
+@media (min-width:1000px) and (max-width:1180px){.nav-desktop a{padding:9px 10px;font-size:14px}.marca .nome{font-size:27px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Pamela Bohon, Advocacia Criminal, OAB/SC 57290. Ir para o início">
+      <span class="nome">PAMELA BOHON</span>
+      <span class="sub">ADVOCACIA CRIMINAL</span>
+      <span class="oab">OAB/SC 57290</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Principal">
+      <ul>
+        <li><a href="#conheca">Conheça Pamela</a></li>
+        <li><a href="#atuacao">Atuação</a></li>
+        <li><a href="#trajetoria">Trajetória</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+        <li><a class="contato" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="btn-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="painel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="painel" id="painel" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="veu" data-fechar></div>
+  <div class="folha">
+    <div class="folha-topo"><span>MENU</span>
+      <button class="fechar" type="button" aria-label="Fechar menu" data-fechar>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#conheca" data-abre-conheca>Conheça Pamela</a></li>
+      <li><a href="#atuacao">Atuação</a></li>
+      <li><a href="#trajetoria">Trajetória</a></li>
+      <li><a href="#principios">Princípios</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</div>
+
+<main id="conteudo">
+  <section class="hero" id="inicio" aria-label="Apresentação">
+    <div class="wrap">
+      <figure class="retrato">
+        <img src="pamela.webp" width="1000" height="1327" alt="Retrato de Pamela Bohon" decoding="async" fetchpriority="high">
+      </figure>
+      <div class="hero-col">
+        <div class="hero-texto">
+          <h1><span class="par"><span class="l">Defesa</span> <span class="l">técnica.</span></span> <span class="par"><span class="l">Atuação</span> <span class="l">estratégica.</span></span></h1>
+          <p class="local">Itajaí · Santa Catarina</p>
+          <p class="selo-plantao"><span class="ponto" aria-hidden="true"></span>Plantão 24 horas</p>
+        </div>
+        
+        <div class="credenciais">
+          <dl><dt>6+</dt><dd>Anos de experiência</dd></dl>
+          <span class="div" aria-hidden="true"></span>
+          <dl><dt>PUC-RS</dt><dd>Direito Penal e Criminologia</dd></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plantao" id="plantao" aria-labelledby="t-plantao">
+    <div class="wrap">
+      <div class="plantao-box">
+        <div class="plantao-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="plantao-texto">
+          <h2 id="t-plantao">Plantão 24 horas</h2>
+          <p>Atendimento em regime de plantão, 24 horas por dia. A mensagem chega diretamente à advogada.</p>
+          <p class="plantao-aviso">Para preservar sua privacidade, envie apenas uma breve apresentação. Os detalhes são tratados em conversa reservada.</p>
+        </div>
+        <a class="cta cta-plantao" href="#contato" data-whatsapp data-rotulo-wa="Falar pelo WhatsApp" data-rotulo-sem="Ver canais de contato">
+          <span class="rotulo-btn">Ver canais de contato</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao conheca" id="conheca" aria-labelledby="t-conheca">
+    <div class="wrap">
+      <div class="secao-cab">
+        <h2 id="t-conheca" class="h2-exp"><button class="expandir" type="button" aria-expanded="false" aria-controls="gaveta-conheca">
+          <span class="titulos"><span class="t">Conheça Pamela</span>
+            <span class="resumo">Formação, experiência e trajetória institucional.</span></span>
+          <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button></h2>
+        <div class="gaveta" id="gaveta-conheca" role="region" aria-labelledby="t-conheca">
+          <div>
+            <div class="corpo">
+              <div class="bio">
+                <p>Pamela Bohon é advogada com atuação em Direito Criminal em Itajaí, Santa Catarina.</p>
+                <p>Formou-se em Direito pela UNIVALI em 2018 e aprofundou a formação com a especialização em Direito Penal e Criminologia pela PUC-RS. Soma mais de seis anos de experiência profissional.</p>
+                <p>A Criminologia amplia o olhar sobre cada caso: além da norma, as pessoas, os contextos e as circunstâncias. A mesma perspectiva acompanha sua atuação institucional em Itajaí, em espaços dedicados aos direitos humanos, ao sistema prisional e à advocacia criminal.</p>
+              </div>
+              <ul class="dados">
+                <li><strong>6+</strong><span>anos de experiência profissional</span></li>
+                <li><strong>2018</strong><span>conclusão da graduação em Direito</span></li>
+                <li><strong>UNIVALI</strong><span>Bacharelado em Direito</span></li>
+                <li><strong>PUC-RS</strong><span>Especialização em Direito Penal e Criminologia</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="atuacao" aria-labelledby="t-atuacao">
+    <div class="wrap">
+      <div class="secao-cab">
+        <div class="titulos">
+          <h2 id="t-atuacao">Atuação</h2>
+          <p class="resumo">Da investigação ao processo, do julgamento à execução da pena.</p>
+        </div>
+        <div class="corpo">
+          <ul class="itens">
+            <li><h3>Defesa criminal</h3><p>Acompanhamento técnico de processos criminais, com análise de cada fase e das alternativas possíveis.</p></li>
+            <li><h3>Tribunal do Júri</h3><p>Atuação em processos de competência do Tribunal do Júri, da instrução à sessão de julgamento.</p></li>
+            <li><h3>Execução penal</h3><p>Acompanhamento do cumprimento da pena e dos direitos previstos na Lei de Execução Penal.</p></li>
+            <li><h3>Inquéritos e investigações</h3><p>Acompanhamento de pessoas investigadas desde a fase preliminar, incluindo depoimentos e diligências.</p></li>
+            <li><h3>Medidas urgentes</h3><p>Pedidos relacionados à liberdade, como habeas corpus e revogação de prisão, analisados caso a caso.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao larga" id="trajetoria" aria-labelledby="t-trajetoria">
+    <div class="wrap">
+      <div class="secao-cab">
+        <div class="titulos">
+          <h2 id="t-trajetoria">Trajetória</h2>
+          <p class="resumo">Atuação em instituições ligadas ao sistema de justiça criminal e à defesa de direitos em Itajaí.</p>
+        </div>
+        <div class="corpo">
+          <p class="grupo">ATUALMENTE</p>
+          <ul class="cargos">
+            <li><span class="cargo">Presidente</span><span class="orgao">Conselho da Comunidade da Comarca de Itajaí</span><small>Órgão da execução penal previsto na Lei de Execução Penal (Lei nº 7.210/1984)</small></li>
+            <li><span class="cargo">Vice-Presidente</span><span class="orgao">Comissão de Direitos Humanos</span><small>OAB, Subseção de Itajaí</small></li>
+            <li><span class="cargo">Secretária</span><span class="orgao">Comissão de Assuntos Prisionais e Tribunal do Júri</span><small>OAB, Subseção de Itajaí</small></li>
+            <li><span class="cargo">Conselheira</span><span class="orgao">OAB, Subseção de Itajaí</span></li>
+          </ul>
+          <p class="grupo">ANTERIORMENTE</p>
+          <ul class="cargos cargos-ant">
+            <li><span class="cargo">Presidente</span><span class="orgao">Comissão de Direito Criminal</span><small>OAB, Subseção de Itajaí · Gestão 2025</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao larga" id="principios" aria-labelledby="t-principios">
+    <div class="wrap">
+      <div class="secao-cab">
+        <div class="titulos">
+          <h2 id="t-principios">Princípios</h2>
+          <p class="resumo">O que orienta cada defesa.</p>
+        </div>
+        <div class="corpo principios">
+          <div><h3>Estratégia</h3><p>Cada situação é analisada em sua particularidade. Não existe defesa padrão.</p></div>
+          <div><h3>Técnica</h3><p>Decisões fundamentadas em estudo, legislação e jurisprudência.</p></div>
+          <div><h3>Clareza</h3><p>Cada etapa explicada em linguagem direta, para que as decisões sejam tomadas com consciência.</p></div>
+          <div><h3>Discrição</h3><p>Sigilo profissional e responsabilidade no tratamento de informações sensíveis.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="duvidas" aria-labelledby="t-duvidas">
+    <div class="wrap">
+      <div class="secao-cab">
+        <div class="titulos">
+          <h2 id="t-duvidas">Dúvidas frequentes</h2>
+          <p class="resumo">Informações gerais sobre o atendimento. Situações específicas são tratadas em conversa reservada.</p>
+          <div class="nota-lateral">
+            <p class="nota-tit">Plantão 24 horas</p>
+            <p>Prefere conversar diretamente? A mensagem chega à advogada.</p>
+            <a class="link-nota" href="#contato" data-whatsapp>Falar pelo WhatsApp <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+          </div>
+        </div>
+        <div class="corpo faq">
+          <details><summary>Como funciona o primeiro atendimento?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>O primeiro atendimento é uma conversa reservada para compreender a situação, esclarecer dúvidas e avaliar os caminhos possíveis. Não é necessário chegar com todos os documentos organizados.</p></details>
+          <details><summary>O atendimento é realizado diretamente pela advogada?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Sim. O atendimento é conduzido por Pamela Bohon, do primeiro contato ao acompanhamento do caso.</p></details>
+          <details><summary>É possível realizar atendimento online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Sim. Reuniões podem ser realizadas por videochamada quando a situação permitir, além do atendimento presencial em Itajaí.</p></details>
+          <details><summary>Quais regiões são atendidas?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>A base de atuação é Itajaí, Santa Catarina. A atuação em outras comarcas é avaliada conforme cada caso.</p></details>
+          <details><summary>Como solicitar um atendimento?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Pelo canal de contato indicado nesta página. No primeiro contato, basta uma breve apresentação; os detalhes são tratados em atendimento reservado.</p></details>
+          <details><summary>As informações compartilhadas são sigilosas?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p>Sim. O sigilo profissional é dever do advogado, previsto no Estatuto da Advocacia e da OAB (Lei nº 8.906/1994) e no Código de Ética e Disciplina da OAB.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="contato" aria-labelledby="t-contato">
+    <div class="wrap">
+      <div class="secao-cab">
+        <div class="titulos">
+          <h2 id="t-contato">Contato</h2>
+          <p class="resumo">Cada caso começa por uma conversa.</p>
+        </div>
+        <div class="corpo">
+          <div class="contato-box">
+            <p>Para solicitar um atendimento, entre em contato. As informações compartilhadas são protegidas pelo sigilo profissional.</p>
+            <p class="aviso">Para preservar sua privacidade, evite enviar detalhes do caso por mensagem.</p>
+            <a class="cta so-wa" href="#contato" data-whatsapp hidden>WhatsApp · Plantão 24h<span class="sr-only"> (abre em nova aba)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+            
+            <p class="local-2"><span>Itajaí · Santa Catarina</span><span>26°54′ S · 48°39′ O</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="rodape">
+      <div class="f-marca"><strong>PAMELA BOHON</strong>Advocacia Criminal · OAB/SC 57290<br>Itajaí, Santa Catarina</div>
+      <div><h4>NAVEGAÇÃO</h4><ul>
+        <li><a href="#inicio">Início</a></li><li><a href="#conheca" data-abre-conheca>Sobre</a></li><li><a href="#atuacao">Atuação</a></li><li><a href="#trajetoria">Trajetória</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+      <div><h4>CONTATO</h4><ul>
+        <li class="so-wa"><a href="#contato" data-whatsapp>WhatsApp</a></li><li><a href="#inicio">Voltar ao topo</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Pamela Bohon · Advocacia Criminal · <a href="#">Política de Privacidade</a></span><span>Digital experience by VETRA</span></div>
+  </div>
+</footer>
+
+<nav class="nav-inferior" aria-label="Navegação rápida">
+  <ul>
+    <li><a href="#inicio" data-alvo="inicio" aria-current="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20h-5.5v-5.5h-5V20H4z"/></svg>Início</a></li>
+    <li><a href="#trajetoria" data-alvo="trajetoria">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>Trajetória</a></li>
+    <li><a href="#contato" data-alvo="contato">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.2 7.8l1.3 2.4-1 1.1c.6 1.3 1.6 2.3 2.9 2.9l1.1-1 2.4 1.3-.4 1.6c-.2.6-.8 1-1.4.9-3.5-.5-6.3-3.3-6.8-6.8-.1-.6.3-1.2.9-1.4z"/></svg>Contato</a></li>
+  </ul>
+</nav>
+
+<script>
+/* ===== CONFIGURAÇÃO DO WHATSAPP =====
+   Preencha com o número confirmado da Dra. Pamela: só dígitos, com 55 + DDD.
+   Exemplo de formato: 5547XXXXXXXXX. Enquanto estiver vazio, os botões
+   levam à seção de contato e nenhum link de WhatsApp é criado. */
+var WHATSAPP_NUMERO = '5547999854000';
+var WHATSAPP_MENSAGEM = 'Olá, Dra. Pamela. Gostaria de solicitar um atendimento.';
+(function(){
+  var num=(WHATSAPP_NUMERO||'').replace(/\D/g,'');
+  var ok=/^55\d{10,11}$/.test(num);
+  if(!ok) return;
+  var url='https://wa.me/'+num+'?text='+encodeURIComponent(WHATSAPP_MENSAGEM);
+  document.querySelectorAll('[data-whatsapp]').forEach(function(a){
+    a.href=url;a.target='_blank';a.rel='noopener';
+    var r=a.querySelector('.rotulo-btn');if(r&&a.dataset.rotuloWa)r.textContent=a.dataset.rotuloWa;
+  });
+  document.querySelectorAll('.so-wa').forEach(function(el){el.hidden=false});
+})();
+(function(){
+  // Menu mobile
+  var btn=document.querySelector('.btn-menu'), painel=document.getElementById('painel');
+  function abrir(){painel.classList.add('aberto');requestAnimationFrame(function(){painel.classList.add('visivel')});btn.setAttribute('aria-expanded','true');var f=painel.querySelector('.fechar');f&&f.focus();document.addEventListener('keydown',esc)}
+  function fechar(foco){painel.classList.remove('visivel');btn.setAttribute('aria-expanded','false');setTimeout(function(){painel.classList.remove('aberto')},250);document.removeEventListener('keydown',esc);if(foco!==false)btn.focus()}
+  function esc(e){if(e.key==='Escape')fechar();if(e.key==='Tab'){var f=painel.querySelectorAll('a,button'),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}}
+  btn.addEventListener('click',abrir);
+  painel.querySelectorAll('[data-fechar]').forEach(function(el){el.addEventListener('click',function(){fechar()})});
+  painel.querySelectorAll('.folha a').forEach(function(a){a.addEventListener('click',function(){fechar(false)})});
+
+  // Conheça Pamela (expansível)
+  var exp=document.querySelector('.expandir'), gav=document.getElementById('gaveta-conheca');
+  function setConheca(v){exp.setAttribute('aria-expanded',v?'true':'false');gav.classList.toggle('aberta',v);gav.inert=!v}
+  setConheca(false);
+  exp.addEventListener('click',function(){setConheca(exp.getAttribute('aria-expanded')!=='true')});
+  document.querySelectorAll('[data-abre-conheca]').forEach(function(a){a.addEventListener('click',function(){setConheca(true)})});
+  if(location.hash==='#conheca')setConheca(true);
+
+  // Navegação inferior: item ativo
+  var links=document.querySelectorAll('.nav-inferior a');
+  var trj=document.getElementById('trajetoria'), ctt=document.getElementById('contato');
+  function ativo(){
+    var y=window.innerHeight*0.45, id='inicio';
+    if(trj.getBoundingClientRect().top<y)id='trajetoria';
+    if(ctt.getBoundingClientRect().top<y||(window.innerHeight+window.scrollY)>=document.documentElement.scrollHeight-4)id='contato';
+    links.forEach(function(l){l.setAttribute('aria-current',l.dataset.alvo===id?'true':'false')});
+  }
+  window.addEventListener('scroll',ativo,{passive:true});window.addEventListener('resize',ativo);ativo();
+})();
+</script>
+</body>
+</html>
