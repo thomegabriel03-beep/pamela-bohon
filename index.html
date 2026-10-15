@@ -57,6 +57,7 @@ img{max-width:100%;display:block}
 .topo .wrap{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:8px;padding-top:22px;padding-bottom:8px}
 .marca{grid-column:2;text-align:center;text-decoration:none;line-height:1}
 .marca .nome{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,7vw,34px);letter-spacing:.015em;white-space:nowrap}
+.marca .oab{display:block;margin-top:6px;font-size:clamp(10px,2.7vw,11.5px);letter-spacing:.18em;padding-left:.18em;color:var(--champagne);font-weight:500}
 .marca .sub{display:block;margin-top:7px;font-size:clamp(9.5px,2.6vw,11px);letter-spacing:.32em;padding-left:.32em;color:var(--marfim);opacity:.9}
 .btn-menu{grid-column:3;width:48px;height:48px;border-radius:12px;border:1px solid rgba(201,176,177,.28);background:linear-gradient(160deg,rgba(105,67,76,.8),rgba(58,22,32,.75));box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(242,232,220,.12);color:var(--marfim);display:grid;place-items:center;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:border-color .2s,transform .2s}
 .btn-menu:hover{border-color:var(--fio-forte)}
@@ -325,9 +326,10 @@ body{padding-bottom:calc(var(--nav-h) + 30px + env(safe-area-inset-bottom,0px))}
 
 <header class="topo">
   <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="Pamela Bohon, Advocacia Criminal. Ir para o início">
+    <a class="marca" href="#inicio" aria-label="Pamela Bohon, Advocacia Criminal, OAB/SC 57290. Ir para o início">
       <span class="nome">PAMELA BOHON</span>
       <span class="sub">ADVOCACIA CRIMINAL</span>
+      <span class="oab">OAB/SC 57290</span>
     </a>
     <nav class="nav-desktop" aria-label="Principal">
       <ul>
@@ -543,7 +545,7 @@ body{padding-bottom:calc(var(--nav-h) + 30px + env(safe-area-inset-bottom,0px))}
 <footer>
   <div class="wrap">
     <div class="rodape">
-      <div class="f-marca"><strong>PAMELA BOHON</strong>Advocacia Criminal · Itajaí, Santa Catarina</div>
+      <div class="f-marca"><strong>PAMELA BOHON</strong>Advocacia Criminal · OAB/SC 57290<br>Itajaí, Santa Catarina</div>
       <div><h4>NAVEGAÇÃO</h4><ul>
         <li><a href="#inicio">Início</a></li><li><a href="#conheca" data-abre-conheca>Sobre</a></li><li><a href="#atuacao">Atuação</a></li><li><a href="#trajetoria">Trajetória</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
       <div><h4>CONTATO</h4><ul>
